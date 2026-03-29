@@ -9,7 +9,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -41,13 +41,9 @@
             --text-primary: #1c1917;
             --text-secondary: #57534e;
             --text-muted: #78716c;
-            --overlay-dark: rgba(28, 25, 23, 0.7);
-            --overlay-medium: rgba(28, 25, 23, 0.45);
-            --overlay-light: rgba(28, 25, 23, 0.15);
             --font-display: 'Cormorant Garamond', Georgia, serif;
             --font-body: 'Outfit', sans-serif;
             --transition-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --transition-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -63,25 +59,15 @@
             font-family: var(--font-body);
             font-weight: 300;
             color: var(--text-primary);
-            background: var(--cream);
             overflow-x: hidden;
             line-height: 1.7;
-        }
-
-        /* ─── GLOBAL PARALLAX BACKGROUND ─── */
-        .global-bg {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: -2;
-            background: url('https://github.com/agelmet/OLIA/blob/main/1000031746.jpg?raw=true') center center / cover no-repeat fixed;
-        }
-        .global-bg::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(247, 245, 240, 0.82);
-            backdrop-filter: blur(1px);
+            
+            /* ─── GLOBAL PARALLAX BACKGROUND ─── */
+            background-image: url('https://raw.githubusercontent.com/agelmet/OLIA/refs/heads/main/1000031746.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: var(--cream);
         }
 
         /* ─── SCROLLBAR ─── */
@@ -104,18 +90,6 @@
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
-        }
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-60px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(60px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes breathe {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
         }
         @keyframes float {
             0%, 100% { transform: translateY(0); }
@@ -145,22 +119,24 @@
         .reveal-delay-4 { transition-delay: 0.6s; }
 
         /* ═══════════════════════════════════════
-           NAVIGATION
+           NAVIGATION (Updated to be Solid & Interesting)
         ═══════════════════════════════════════ */
         .nav {
             position: fixed;
             top: 0; left: 0;
             width: 100%;
             z-index: 1000;
-            padding: 20px 0;
+            padding: 16px 0;
+            background: var(--cream);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-bottom: 2px solid var(--sage-200);
             transition: all 0.5s var(--transition-smooth);
         }
         .nav.scrolled {
-            padding: 12px 0;
-            background: rgba(247, 245, 240, 0.92);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+            padding: 10px 0;
+            background: #ffffff;
+            box-shadow: 0 6px 30px rgba(0,0,0,0.12);
+            border-bottom-color: var(--sage-300);
         }
         .nav-inner {
             display: flex;
@@ -170,28 +146,54 @@
             margin: 0 auto;
             padding: 0 clamp(20px, 5vw, 60px);
         }
+
+        /* ─── UPDATED LOGO ─── */
         .nav-logo {
             text-decoration: none;
             display: flex;
-            flex-direction: column;
-            gap: 0;
-            transition: opacity 0.3s;
+            align-items: center;
+            gap: 14px;
+            transition: opacity 0.3s, transform 0.3s;
         }
-        .nav-logo:hover { opacity: 0.7; }
+        .nav-logo:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: var(--sage-100);
+            color: var(--sage-700);
+            border-radius: 50%;
+            border: 1px solid var(--sage-300);
+        }
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
         .nav-logo-name {
             font-family: var(--font-display);
-            font-size: clamp(18px, 2.2vw, 24px);
-            font-weight: 500;
+            font-size: clamp(20px, 2.2vw, 26px);
+            font-weight: 600;
             color: var(--stone-800);
-            letter-spacing: 0.02em;
-            line-height: 1.2;
+            letter-spacing: 0.03em;
+            line-height: 1;
+        }
+        .nav-logo-name span {
+            color: var(--sage-600);
+            font-style: italic;
+            font-weight: 400;
         }
         .nav-logo-title {
             font-family: var(--font-body);
-            font-size: 10px;
-            font-weight: 300;
-            color: var(--sage-500);
-            letter-spacing: 0.15em;
+            font-size: 10.5px;
+            font-weight: 500;
+            color: var(--stone-500);
+            letter-spacing: 0.25em;
             text-transform: uppercase;
         }
 
@@ -202,8 +204,8 @@
         }
         .nav-links a {
             font-family: var(--font-body);
-            font-size: 11px;
-            font-weight: 400;
+            font-size: 12px;
+            font-weight: 500;
             letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--stone-600);
@@ -215,8 +217,8 @@
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: 0; left: 0;
-            width: 100%; height: 1px;
+            bottom: -2px; left: 0;
+            width: 100%; height: 2px;
             background: var(--accent);
             transform: scaleX(0);
             transform-origin: right;
@@ -226,21 +228,18 @@
         .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
 
         .nav-cta {
-            font-family: var(--font-body) !important;
-            font-size: 11px !important;
-            font-weight: 400 !important;
-            letter-spacing: 0.1em !important;
-            text-transform: uppercase !important;
-            color: var(--cream) !important;
             background: var(--stone-800);
+            color: var(--cream) !important;
             padding: 12px 24px !important;
-            border-radius: 0;
+            border-radius: 4px;
             transition: all 0.4s var(--transition-smooth) !important;
         }
         .nav-cta::after { display: none !important; }
         .nav-cta:hover {
             background: var(--accent-dark) !important;
             color: #fff !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         /* Mobile Menu */
@@ -312,25 +311,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('https://github.com/agelmet/OLIA/blob/main/1000031746.jpg?raw=true') center center / cover no-repeat;
-            z-index: -1;
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                180deg,
-                rgba(28, 25, 23, 0.35) 0%,
-                rgba(28, 25, 23, 0.50) 50%,
-                rgba(28, 25, 23, 0.65) 100%
-            );
-            z-index: -1;
+            background: linear-gradient(180deg, rgba(28, 25, 23, 0.55) 0%, rgba(28, 25, 23, 0.8) 100%);
         }
 
         .hero-content {
@@ -338,15 +319,16 @@
             max-width: 800px;
             padding: 0 clamp(20px, 5vw, 60px);
             position: relative;
+            z-index: 10;
         }
 
         .hero-label {
             font-family: var(--font-body);
             font-size: 11px;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 0.3em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.8);
             margin-bottom: 24px;
             animation: fadeUp 1s var(--transition-smooth) 0.3s both;
         }
@@ -378,8 +360,8 @@
         .hero-subtitle {
             font-family: var(--font-body);
             font-size: clamp(14px, 1.5vw, 17px);
-            font-weight: 200;
-            color: rgba(255,255,255,0.75);
+            font-weight: 300;
+            color: rgba(255,255,255,0.85);
             max-width: 520px;
             margin: 0 auto 48px;
             line-height: 1.8;
@@ -401,7 +383,7 @@
             gap: 10px;
             font-family: var(--font-body);
             font-size: 11px;
-            font-weight: 400;
+            font-weight: 500;
             letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--stone-900);
@@ -411,6 +393,7 @@
             transition: all 0.4s var(--transition-smooth);
             position: relative;
             overflow: hidden;
+            border-radius: 4px;
         }
         .btn-primary::before {
             content: '';
@@ -429,19 +412,20 @@
         .btn-ghost {
             font-family: var(--font-body);
             font-size: 11px;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.9);
             text-decoration: none;
             padding: 16px 24px;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 4px;
             transition: all 0.4s var(--transition-smooth);
         }
         .btn-ghost:hover {
             color: #fff;
-            border-color: rgba(255,255,255,0.5);
-            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.6);
+            background: rgba(255,255,255,0.1);
         }
 
         .hero-scroll {
@@ -454,29 +438,40 @@
             align-items: center;
             gap: 8px;
             animation: fadeIn 1s var(--transition-smooth) 1.5s both;
+            z-index: 10;
         }
         .hero-scroll span {
             font-size: 9px;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.4);
-            font-weight: 300;
+            color: rgba(255,255,255,0.6);
+            font-weight: 400;
         }
         .scroll-line {
             width: 1px;
             height: 40px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+            background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
             animation: float 2s ease-in-out infinite;
+        }
+
+        /* ═══════════════════════════════════════
+           SECTIONS GENERAL - Letting the background peek through
+        ═══════════════════════════════════════ */
+        .light-section {
+            background: rgba(247, 245, 240, 0.88);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .dark-section {
+            background: rgba(28, 25, 23, 0.88);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--stone-100);
         }
 
         /* ═══════════════════════════════════════
            ABOUT / PHILOSOPHY
         ═══════════════════════════════════════ */
-        .about {
-            position: relative;
-            background: rgba(247, 245, 240, 0.92);
-            backdrop-filter: blur(6px);
-        }
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -490,6 +485,7 @@
             position: relative;
             overflow: hidden;
             aspect-ratio: 3/4;
+            border-radius: 4px;
         }
         .about-image-frame img {
             width: 100%;
@@ -506,8 +502,9 @@
             right: -20px;
             width: 140px;
             height: 140px;
-            border: 1px solid var(--sage-300);
+            border: 1px solid var(--sage-400);
             z-index: -1;
+            border-radius: 4px;
         }
         .about-image-tag {
             position: absolute;
@@ -518,25 +515,26 @@
             padding: 16px 24px;
             font-family: var(--font-body);
             font-size: 11px;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 0.1em;
             text-transform: uppercase;
             z-index: 2;
+            border-radius: 4px;
         }
 
         .about-label {
             font-family: var(--font-body);
             font-size: 11px;
-            font-weight: 400;
+            font-weight: 500;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--sage-500);
+            color: var(--sage-600);
             margin-bottom: 16px;
         }
         .about-heading {
             font-family: var(--font-display);
             font-size: clamp(30px, 4vw, 48px);
-            font-weight: 300;
+            font-weight: 400;
             line-height: 1.2;
             color: var(--stone-800);
             margin-bottom: 32px;
@@ -570,18 +568,6 @@
         /* ═══════════════════════════════════════
            TEDx SECTION
         ═══════════════════════════════════════ */
-        .tedx {
-            background: var(--stone-900);
-            position: relative;
-            overflow: hidden;
-        }
-        .tedx::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('https://github.com/agelmet/OLIA/blob/main/1000031746.jpg?raw=true') center center / cover no-repeat fixed;
-            opacity: 0.08;
-        }
         .tedx-inner {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -593,12 +579,13 @@
             position: relative;
             cursor: pointer;
             overflow: hidden;
+            border-radius: 4px;
         }
         .tedx-image-wrap::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(0,0,0,0.25);
+            background: rgba(0,0,0,0.3);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -611,7 +598,7 @@
             transform: translate(-50%, -50%);
             z-index: 2;
             width: 72px; height: 72px;
-            border: 2px solid rgba(255,255,255,0.6);
+            border: 2px solid rgba(255,255,255,0.8);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -633,7 +620,7 @@
 
         .tedx-content .about-label { color: var(--sage-300); }
         .tedx-content .about-heading { color: var(--stone-100); }
-        .tedx-content .about-text { color: var(--stone-400); }
+        .tedx-content .about-text { color: var(--stone-300); }
 
         @media (max-width: 800px) {
             .tedx-inner { grid-template-columns: 1fr; }
@@ -642,10 +629,6 @@
         /* ═══════════════════════════════════════
            SERVICES
         ═══════════════════════════════════════ */
-        .services {
-            background: rgba(247, 245, 240, 0.92);
-            backdrop-filter: blur(6px);
-        }
         .section-header {
             text-align: center;
             margin-bottom: clamp(48px, 6vw, 80px);
@@ -672,7 +655,8 @@
             position: relative;
             overflow: hidden;
             transition: all 0.5s var(--transition-smooth);
-            border: 1px solid rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 4px;
         }
         .service-card::before {
             content: '';
@@ -683,7 +667,7 @@
             background: var(--accent);
             transition: height 0.5s var(--transition-smooth);
         }
-        .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.06); }
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
         .service-card:hover::before { height: 100%; }
 
         .service-icon {
@@ -694,7 +678,7 @@
         .service-card h3 {
             font-family: var(--font-display);
             font-size: clamp(20px, 2vw, 24px);
-            font-weight: 400;
+            font-weight: 500;
             color: var(--stone-800);
             margin-bottom: 16px;
             line-height: 1.3;
@@ -712,12 +696,13 @@
         }
         .service-tags span {
             font-size: 10px;
-            font-weight: 400;
+            font-weight: 500;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: var(--sage-600);
-            background: var(--sage-50);
+            color: var(--sage-700);
+            background: rgba(133, 147, 118, 0.15);
             padding: 6px 14px;
+            border-radius: 20px;
         }
 
         @media (max-width: 700px) {
@@ -727,21 +712,9 @@
         /* ═══════════════════════════════════════
            PILLARS / APPROACH
         ═══════════════════════════════════════ */
-        .pillars {
-            background: var(--stone-800);
-            position: relative;
-            overflow: hidden;
-        }
-        .pillars::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('https://github.com/agelmet/OLIA/blob/main/1000031746.jpg?raw=true') center center / cover no-repeat fixed;
-            opacity: 0.06;
-        }
         .pillars .section-header .about-label { color: var(--sage-300); }
         .pillars .section-header .about-heading { color: var(--stone-100); }
-        .pillars .section-header p { color: var(--stone-400); }
+        .pillars .section-header p { color: var(--stone-300); }
 
         .pillars-grid {
             display: grid;
@@ -751,22 +724,23 @@
         }
         .pillar-card {
             padding: clamp(28px, 3vw, 40px);
-            border: 1px solid rgba(255,255,255,0.08);
-            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
             backdrop-filter: blur(10px);
             transition: all 0.5s var(--transition-smooth);
             position: relative;
+            border-radius: 4px;
         }
         .pillar-card:hover {
-            background: rgba(255,255,255,0.06);
-            border-color: rgba(133, 147, 118, 0.3);
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(133, 147, 118, 0.5);
             transform: translateY(-4px);
         }
         .pillar-num {
             font-family: var(--font-display);
             font-size: 48px;
             font-weight: 300;
-            color: rgba(133, 147, 118, 0.3);
+            color: rgba(133, 147, 118, 0.5);
             line-height: 1;
             margin-bottom: 20px;
         }
@@ -780,7 +754,7 @@
         }
         .pillar-card p {
             font-size: 13px;
-            color: var(--stone-400);
+            color: var(--stone-300);
             line-height: 1.8;
         }
 
@@ -792,31 +766,8 @@
         }
 
         /* ═══════════════════════════════════════
-           SPACE / GALLERY
-        ═══════════════════════════════════════ */
-        .space {
-            background: rgba(247, 245, 240, 0.92);
-            backdrop-filter: blur(6px);
-        }
-
-        .space-note {
-            text-align: center;
-            font-size: 14px;
-            color: var(--text-muted);
-            font-style: italic;
-            margin-top: -20px;
-            margin-bottom: 40px;
-        }
-
-        /* ═══════════════════════════════════════
            REVIEWS
         ═══════════════════════════════════════ */
-        .reviews {
-            background: rgba(247, 245, 240, 0.92);
-            backdrop-filter: blur(6px);
-            overflow: hidden;
-        }
-
         .reviews-track-wrap {
             position: relative;
             overflow: hidden;
@@ -839,15 +790,16 @@
         .review-card {
             flex-shrink: 0;
             width: 360px;
-            background: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.85);
             backdrop-filter: blur(10px);
             padding: 32px;
-            border: 1px solid rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 4px;
             transition: all 0.4s var(--transition-smooth);
         }
         .review-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 16px 48px rgba(0,0,0,0.06);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.08);
         }
         .review-top {
             display: flex;
@@ -873,7 +825,7 @@
         }
         .review-da-icon {
             height: 20px;
-            opacity: 0.5;
+            opacity: 0.6;
         }
         .review-text {
             font-size: 14px;
@@ -885,7 +837,7 @@
         .review-author {
             font-family: var(--font-body);
             font-size: 12px;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 0.05em;
             color: var(--stone-700);
             text-transform: uppercase;
@@ -905,7 +857,7 @@
             align-items: center;
             gap: 10px;
             font-size: 12px;
-            font-weight: 400;
+            font-weight: 500;
             letter-spacing: 0.1em;
             text-transform: uppercase;
             color: var(--stone-600);
@@ -918,18 +870,6 @@
         /* ═══════════════════════════════════════
            CONTACT / CTA
         ═══════════════════════════════════════ */
-        .contact {
-            background: var(--stone-900);
-            position: relative;
-            overflow: hidden;
-        }
-        .contact::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('https://github.com/agelmet/OLIA/blob/main/1000031746.jpg?raw=true') center center / cover no-repeat fixed;
-            opacity: 0.08;
-        }
         .contact-inner {
             position: relative;
             display: grid;
@@ -950,7 +890,7 @@
         }
         .contact-main > p {
             font-size: 15px;
-            color: var(--stone-400);
+            color: var(--stone-300);
             line-height: 1.8;
             margin-bottom: 40px;
             max-width: 480px;
@@ -961,7 +901,7 @@
             gap: 12px;
             font-family: var(--font-body);
             font-size: 11px;
-            font-weight: 400;
+            font-weight: 500;
             letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--stone-900);
@@ -969,6 +909,7 @@
             padding: 18px 40px;
             text-decoration: none;
             transition: all 0.4s var(--transition-smooth);
+            border-radius: 4px;
         }
         .contact-btn:hover { background: var(--sage-300); transform: translateY(-2px); }
         .contact-btn svg { width: 14px; height: 14px; transition: transform 0.3s; }
@@ -977,7 +918,7 @@
         .contact-info { margin-top: 20px; }
         .contact-info-label {
             font-size: 11px;
-            font-weight: 400;
+            font-weight: 500;
             letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--sage-400);
@@ -998,7 +939,7 @@
         .contact-info-item a,
         .contact-info-item span {
             font-size: 14px;
-            color: var(--stone-300);
+            color: var(--stone-200);
             text-decoration: none;
             line-height: 1.6;
             transition: color 0.3s;
@@ -1008,7 +949,7 @@
         .contact-hours {
             margin-top: 32px;
             padding-top: 32px;
-            border-top: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
         .contact-socials {
             display: flex;
@@ -1020,23 +961,24 @@
             align-items: center;
             justify-content: center;
             width: 44px; height: 44px;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
             transition: all 0.3s var(--transition-smooth);
+            border-radius: 4px;
         }
         .contact-socials a:hover {
             border-color: var(--sage-400);
-            background: rgba(255,255,255,0.04);
+            background: rgba(255,255,255,0.1);
         }
         .contact-socials a svg,
         .contact-socials a img {
             width: 18px; height: 18px;
-            color: var(--stone-400);
-            filter: brightness(0) invert(0.6);
+            color: var(--stone-300);
+            filter: brightness(0) invert(0.8);
         }
         .contact-socials a:hover svg,
         .contact-socials a:hover img {
             color: var(--sage-300);
-            filter: brightness(0) invert(0.8);
+            filter: brightness(0) invert(1);
         }
 
         @media (max-width: 800px) {
@@ -1047,8 +989,7 @@
            FOOTER
         ═══════════════════════════════════════ */
         .footer {
-            background: var(--stone-900);
-            border-top: 1px solid rgba(255,255,255,0.04);
+            border-top: 1px solid rgba(255,255,255,0.1);
             padding: 28px 0;
         }
         .footer-inner {
@@ -1061,11 +1002,11 @@
         .footer-inner span,
         .footer-inner a {
             font-size: 12px;
-            color: var(--stone-500);
+            color: var(--stone-400);
             text-decoration: none;
             transition: color 0.3s;
         }
-        .footer-inner a:hover { color: var(--stone-300); }
+        .footer-inner a:hover { color: var(--stone-200); }
 
         /* ═══════════════════════════════════════
            LIGHTBOX
@@ -1087,7 +1028,7 @@
             max-width: 90vw;
             max-height: 90vh;
             object-fit: contain;
-            border-radius: 2px;
+            border-radius: 4px;
         }
         .lightbox-close {
             position: absolute;
@@ -1101,9 +1042,6 @@
         .lightbox-close:hover { color: #fff; }
         .lightbox-close svg { width: 28px; height: 28px; }
 
-        /* ═══════════════════════════════════════
-           RESPONSIVE FINE-TUNING
-        ═══════════════════════════════════════ */
         @media (max-width: 600px) {
             .hero-actions { flex-direction: column; }
             .btn-primary, .btn-ghost { width: 100%; text-align: center; justify-content: center; }
@@ -1112,15 +1050,20 @@
 </head>
 <body>
 
-    <!-- GLOBAL BG -->
-    <div class="global-bg"></div>
-
-    <!-- ═══ NAVIGATION ═══ -->
     <nav class="nav" id="nav">
         <div class="nav-inner">
             <a href="#top" class="nav-logo">
-                <span class="nav-logo-name">Όλια Παμπουκίδου</span>
-                <span class="nav-logo-title">Ψυχολόγος &middot; Ψυχοθεραπεύτρια</span>
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 22C12 22 4 16 4 10C4 6 7 3 12 3C17 3 20 6 20 10C20 16 12 22 12 22Z" stroke-linejoin="round" stroke-linecap="round"/>
+                        <path d="M12 12C12 12 9 10 9 8" stroke-linejoin="round" stroke-linecap="round"/>
+                        <path d="M12 12C12 12 15 10 15 8" stroke-linejoin="round" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="nav-logo-name">Όλια <span>Παμπουκίδου</span></span>
+                    <span class="nav-logo-title">Ψυχολόγος &middot; Ψυχοθεραπεύτρια</span>
+                </div>
             </a>
             <div class="nav-links">
                 <a href="#about">Σχετικά</a>
@@ -1135,7 +1078,6 @@
         </div>
     </nav>
 
-    <!-- MOBILE MENU -->
     <div class="mobile-menu" id="mobileMenu">
         <a href="#about" onclick="closeMobile()">Σχετικά</a>
         <a href="#services" onclick="closeMobile()">Υπηρεσίες</a>
@@ -1144,7 +1086,6 @@
         <a href="#contact" onclick="closeMobile()">Κλείστε Ραντεβού</a>
     </div>
 
-    <!-- ═══ HERO ═══ -->
     <section class="hero" id="top">
         <div class="hero-content">
             <p class="hero-label">Καλαμάτα &middot; Online</p>
@@ -1165,8 +1106,7 @@
         </div>
     </section>
 
-    <!-- ═══ ABOUT ═══ -->
-    <section class="about section-pad" id="about">
+    <section class="about light-section section-pad" id="about">
         <div class="container">
             <div class="about-grid">
                 <div class="about-image-wrap reveal">
@@ -1188,8 +1128,7 @@
         </div>
     </section>
 
-    <!-- ═══ TEDx ═══ -->
-    <section class="tedx section-pad" id="tedx">
+    <section class="tedx dark-section section-pad" id="tedx">
         <div class="container">
             <div class="tedx-inner">
                 <a href="https://www.youtube.com/watch?v=inQN5KhaoKQ&authuser=0" target="_blank" rel="noopener" class="tedx-image-wrap reveal">
@@ -1201,15 +1140,14 @@
                 <div class="tedx-content">
                     <p class="about-label reveal">Δημόσιος Λόγος</p>
                     <h2 class="about-heading reveal reveal-delay-1">TEDx Talk &<br><em>Ακαδημαϊκή</em> Παρουσία</h2>
-                    <p class="about-text reveal reveal-delay-2" style="color: var(--stone-400);">Η παρουσία της ως ομιλήτρια σε κορυφαία ακαδημαϊκά ιδρύματα (ΑΠΘ, Πανεπιστήμιο Μακεδονίας) και στον θεσμό TEDx αντανακλά το πάθος της να επικοινωνεί την ψυχολογία στο ευρύ κοινό και να καταρρίπτει τα στίγματα γύρω από την ψυχική υγεία.</p>
-                    <p class="about-text reveal reveal-delay-3" style="color: var(--stone-400);">Παράλληλα, δραστηριοποιείται ως ομιλήτρια στο Ανοιχτό Λαϊκό Πανεπιστήμιο, μεταφέροντας τη γνώση από τα ακαδημαϊκά αμφιθέατρα στον κάθε πολίτη.</p>
+                    <p class="about-text reveal reveal-delay-2">Η παρουσία της ως ομιλήτρια σε κορυφαία ακαδημαϊκά ιδρύματα (ΑΠΘ, Πανεπιστήμιο Μακεδονίας) και στον θεσμό TEDx αντανακλά το πάθος της να επικοινωνεί την ψυχολογία στο ευρύ κοινό και να καταρρίπτει τα στίγματα γύρω από την ψυχική υγεία.</p>
+                    <p class="about-text reveal reveal-delay-3">Παράλληλα, δραστηριοποιείται ως ομιλήτρια στο Ανοιχτό Λαϊκό Πανεπιστήμιο, μεταφέροντας τη γνώση από τα ακαδημαϊκά αμφιθέατρα στον κάθε πολίτη.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══ SERVICES ═══ -->
-    <section class="services section-pad" id="services">
+    <section class="services light-section section-pad" id="services">
         <div class="container">
             <div class="section-header">
                 <p class="about-label reveal">Υπηρεσίες</p>
@@ -1218,8 +1156,6 @@
             </div>
 
             <div class="services-grid">
-
-                <!-- Service 1 -->
                 <div class="service-card reveal">
                     <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path d="M24 4C13 4 4 13 4 24s9 20 20 20 20-9 20-20S35 4 24 4z"/>
@@ -1235,7 +1171,6 @@
                     </div>
                 </div>
 
-                <!-- Service 2 -->
                 <div class="service-card reveal reveal-delay-1">
                     <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path d="M24 44c11-8 18-16 18-24a18 18 0 00-36 0c0 8 7 16 18 24z"/>
@@ -1251,7 +1186,6 @@
                     </div>
                 </div>
 
-                <!-- Service 3 -->
                 <div class="service-card reveal reveal-delay-2">
                     <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path d="M12 20c0-6.6 5.4-12 12-12s12 5.4 12 12"/>
@@ -1268,7 +1202,6 @@
                     </div>
                 </div>
 
-                <!-- Service 4 -->
                 <div class="service-card reveal reveal-delay-3">
                     <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
                         <rect x="6" y="10" width="36" height="24" rx="3"/>
@@ -1284,13 +1217,11 @@
                         <span>50'-60'</span>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- ═══ PILLARS / APPROACH ═══ -->
-    <section class="pillars section-pad" id="approach">
+    <section class="pillars dark-section section-pad" id="approach">
         <div class="container">
             <div class="section-header">
                 <p class="about-label reveal">Η Προσέγγιση</p>
@@ -1323,8 +1254,7 @@
         </div>
     </section>
 
-    <!-- ═══ REVIEWS ═══ -->
-    <section class="reviews section-pad" id="reviews">
+    <section class="reviews light-section section-pad" id="reviews">
         <div class="container">
             <div class="section-header">
                 <p class="about-label reveal">Εμπιστοσύνη</p>
@@ -1335,8 +1265,6 @@
 
         <div class="reviews-track-wrap">
             <div class="reviews-track" id="reviewsTrack">
-
-                <!-- Review 1 -->
                 <div class="review-card">
                     <div class="review-top">
                         <div class="review-score">
@@ -1350,7 +1278,6 @@
                     <div class="review-date">13 Ιανουαρίου 2026</div>
                 </div>
 
-                <!-- Review 2 -->
                 <div class="review-card">
                     <div class="review-top">
                         <div class="review-score">
@@ -1364,7 +1291,6 @@
                     <div class="review-date">06 Ιανουαρίου 2024</div>
                 </div>
 
-                <!-- Review 3 -->
                 <div class="review-card">
                     <div class="review-top">
                         <div class="review-score">
@@ -1378,7 +1304,6 @@
                     <div class="review-date">20 Οκτωβρίου 2023</div>
                 </div>
 
-                <!-- Review 4 -->
                 <div class="review-card">
                     <div class="review-top">
                         <div class="review-score">
@@ -1391,119 +1316,6 @@
                     <div class="review-author">Καλομοίρα</div>
                     <div class="review-date">20 Οκτωβρίου 2023</div>
                 </div>
-
-                <!-- Review 5 -->
-                <div class="review-card">
-                    <div class="review-top">
-                        <div class="review-score">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <strong>10.0</strong><span>/ 10</span>
-                        </div>
-                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
-                    </div>
-                    <p class="review-text">Πάρα πολύ ζεστή, φιλική και αμέσως σου εμπνέει εμπιστοσύνη. Άψογη επαγγελματίας, με βοήθησε ουσιαστικά. Τη συνιστώ ανεπιφύλακτα!</p>
-                    <div class="review-author">Παναγιώτης</div>
-                    <div class="review-date">20 Οκτωβρίου 2023</div>
-                </div>
-
-                <!-- Review 6 -->
-                <div class="review-card">
-                    <div class="review-top">
-                        <div class="review-score">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <strong>10.0</strong><span>/ 10</span>
-                        </div>
-                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
-                    </div>
-                    <p class="review-text">Εξαιρετική επιστήμονας, συνεπής και πολύ φιλική.</p>
-                    <div class="review-author">Kostas</div>
-                    <div class="review-date">18 Οκτωβρίου 2023</div>
-                </div>
-
-                <!-- Review 7 -->
-                <div class="review-card">
-                    <div class="review-top">
-                        <div class="review-score">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <strong>10.0</strong><span>/ 10</span>
-                        </div>
-                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
-                    </div>
-                    <p class="review-text">Πολύ υποστηρικτική, επαγγελματίας, με συνέπεια και όμορφο περιβάλλον.</p>
-                    <div class="review-author">Νικόλαος</div>
-                    <div class="review-date">18 Οκτωβρίου 2023</div>
-                </div>
-
-                <!-- Review 8 -->
-                <div class="review-card">
-                    <div class="review-top">
-                        <div class="review-score">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <strong>10.0</strong><span>/ 10</span>
-                        </div>
-                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
-                    </div>
-                    <p class="review-text">Ευγενική, φιλική, με έκανε να νιώσω πολύ άνετα και να αποδεχτώ την ταυτότητα και τον σεξουαλικό μου προσδιορισμό.</p>
-                    <div class="review-author">Θάνος</div>
-                    <div class="review-date">18 Οκτωβρίου 2023</div>
-                </div>
-
-                <!-- Review 9 -->
-                <div class="review-card">
-                    <div class="review-top">
-                        <div class="review-score">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <strong>10.0</strong><span>/ 10</span>
-                        </div>
-                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
-                    </div>
-                    <p class="review-text">Εξαιρετικά καλή θεραπεύτρια, με βοήθησε πολύ με το συνεχές υπόκωφο άγχος που με βασάνιζε για χρόνια καθώς και με τις κρίσεις πανικού.</p>
-                    <div class="review-author">Νίκη</div>
-                    <div class="review-date">18 Οκτωβρίου 2023</div>
-                </div>
-
-                <!-- Review 10 -->
-                <div class="review-card">
-                    <div class="review-top">
-                        <div class="review-score">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <strong>10.0</strong><span>/ 10</span>
-                        </div>
-                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
-                    </div>
-                    <p class="review-text">Μία ψυχολόγος στην οποία μπόρεσα να ανοιχτώ χωρίς να νιώθω ότι κρίνομαι. Μέσα από τις συνεδρίες μας νιώθω πιο ανάλαφρος πλέον.</p>
-                    <div class="review-author">Γιώργος</div>
-                    <div class="review-date">17 Οκτωβρίου 2023</div>
-                </div>
-
-                <!-- Review 11 -->
-                <div class="review-card">
-                    <div class="review-top">
-                        <div class="review-score">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <strong>10.0</strong><span>/ 10</span>
-                        </div>
-                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
-                    </div>
-                    <p class="review-text">Ενσυναίσθηση, κατανόηση, αμεσότητα. Εξαιρετική επαγγελματίας. Με βοήθησε να απεγκλωβιστώ από τις σκέψεις μου και να εξωτερικεύσω συναισθήματα.</p>
-                    <div class="review-author">Γεωργία</div>
-                    <div class="review-date">17 Οκτωβρίου 2023</div>
-                </div>
-
-                <!-- Review 12 -->
-                <div class="review-card">
-                    <div class="review-top">
-                        <div class="review-score">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <strong>10.0</strong><span>/ 10</span>
-                        </div>
-                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
-                    </div>
-                    <p class="review-text">Μοναδική σχέση εμπιστοσύνης και βαθιάς προσήλωσης. Κατάφερα να διαχειριστώ τις κρίσεις πανικού. Δίπλα μου πάντα, φιλική και επαγγελματίας.</p>
-                    <div class="review-author">Ιαβέρης</div>
-                    <div class="review-date">17 Οκτωβρίου 2023</div>
-                </div>
-
             </div>
         </div>
 
@@ -1517,8 +1329,7 @@
         </div>
     </section>
 
-    <!-- ═══ CONTACT / CTA ═══ -->
-    <section class="contact section-pad" id="contact">
+    <section class="contact dark-section section-pad" id="contact">
         <div class="container">
             <div class="contact-inner">
                 <div class="contact-main">
@@ -1568,8 +1379,7 @@
         </div>
     </section>
 
-    <!-- ═══ FOOTER ═══ -->
-    <footer class="footer">
+    <footer class="footer dark-section">
         <div class="container">
             <div class="footer-inner">
                 <span>&copy; 2026 Όλια Παμπουκίδου. Όλα τα δικαιώματα κατοχυρωμένα.</span>
@@ -1578,7 +1388,6 @@
         </div>
     </footer>
 
-    <!-- ═══ LIGHTBOX ═══ -->
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
         <button class="lightbox-close" aria-label="Close">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -1586,7 +1395,6 @@
         <img id="lightboxImg" src="" alt="">
     </div>
 
-    <!-- ═══ SCRIPTS ═══ -->
     <script>
         // ─── NAV SCROLL ───
         const nav = document.getElementById('nav');
@@ -1637,13 +1445,6 @@
         }
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeLightbox();
-        });
-
-        // ─── SMOOTH PARALLAX ON HERO ───
-        window.addEventListener('scroll', () => {
-            const hero = document.querySelector('.hero::before');
-            const scrolled = window.scrollY;
-            document.querySelector('.hero').style.setProperty('--parallax', scrolled * 0.3 + 'px');
         });
     </script>
 
