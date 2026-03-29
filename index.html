@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Όλια Παμπουκίδου — Συστημική & Αφηγηματική Θεραπεία</title>
+    <meta name="description" content="Συστημική & Αφηγηματική Ψυχοθεραπεία στην Καλαμάτα και Online. Δεν Είσαι το Σύμπτωμά σου.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F33F;</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --stone-50: #fafaf9;
+            --stone-100: #f5f5f4;
+            --stone-200: #e7e5e4;
+            --stone-300: #d6d3d1;
+            --stone-400: #a8a29e;
+            --stone-500: #78716c;
+            --stone-600: #57534e;
+            --stone-700: #44403c;
+            --stone-800: #292524;
+            --stone-900: #1c1917;
+            --sage-50: #f0f2ef;
+            --sage-100: #e0e4dd;
+            --sage-200: #c1c9ba;
+            --sage-300: #a3ae98;
+            --sage-400: #859376;
+            --sage-500: #6b7a5e;
+            --sage-600: #556149;
+            --sage-700: #414a38;
+            --sage-800: #2d3327;
+            --sage-900: #1a1e17;
+            --cream: #f7f5f0;
+            --cream-dark: #ede9e0;
+            --accent: #859376;
+            --accent-light: #a3ae98;
+            --accent-dark: #6b7a5e;
+            --text-primary: #1c1917;
+            --text-secondary: #57534e;
+            --text-muted: #78716c;
+            --overlay-dark: rgba(28, 25, 23, 0.7);
+            --overlay-medium: rgba(28, 25, 23, 0.45);
+            --overlay-light: rgba(28, 25, 23, 0.15);
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Outfit', sans-serif;
+            --transition-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-weight: 300;
+            color: var(--text-primary);
+            background: var(--cream);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* ─── GLOBAL PARALLAX BACKGROUND ─── */
+        .global-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -2;
+            background: url('https://github.com/agelmet/OLIA/blob/main/1000031746.jpg?raw=true') center center / cover no-repeat fixed;
+        }
+        .global-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(247, 245, 240, 0.82);
+            backdrop-filter: blur(1px);
+        }
+
+        /* ─── SCROLLBAR ─── */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--cream); }
+        ::-webkit-scrollbar-thumb { background: var(--sage-300); border-radius: 3px; }
+
+        /* ─── SELECTION ─── */
+        ::selection { background: var(--sage-200); color: var(--stone-900); }
+
+        /* ─── UTILITY ─── */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 60px); }
+        .section-pad { padding: clamp(60px, 10vw, 140px) 0; }
+
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        @keyframes lineGrow {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+        @keyframes gentlePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(133, 147, 118, 0.3); }
+            50% { box-shadow: 0 0 0 12px rgba(133, 147, 118, 0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.15s; }
+        .reveal-delay-2 { transition-delay: 0.3s; }
+        .reveal-delay-3 { transition-delay: 0.45s; }
+        .reveal-delay-4 { transition-delay: 0.6s; }
+
+        /* ═══════════════════════════════════════
+           NAVIGATION
+        ═══════════════════════════════════════ */
+        .nav {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.5s var(--transition-smooth);
+        }
+        .nav.scrolled {
+            padding: 12px 0;
+            background: rgba(247, 245, 240, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+        }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(20px, 5vw, 60px);
+        }
+        .nav-logo {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            transition: opacity 0.3s;
+        }
+        .nav-logo:hover { opacity: 0.7; }
+        .nav-logo-name {
+            font-family: var(--font-display);
+            font-size: clamp(18px, 2.2vw, 24px);
+            font-weight: 500;
+            color: var(--stone-800);
+            letter-spacing: 0.02em;
+            line-height: 1.2;
+        }
+        .nav-logo-title {
+            font-family: var(--font-body);
+            font-size: 10px;
+            font-weight: 300;
+            color: var(--sage-500);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(20px, 3vw, 40px);
+        }
+        .nav-links a {
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--stone-600);
+            text-decoration: none;
+            position: relative;
+            padding: 4px 0;
+            transition: color 0.3s;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 1px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s var(--transition-smooth);
+        }
+        .nav-links a:hover { color: var(--stone-900); }
+        .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+        .nav-cta {
+            font-family: var(--font-body) !important;
+            font-size: 11px !important;
+            font-weight: 400 !important;
+            letter-spacing: 0.1em !important;
+            text-transform: uppercase !important;
+            color: var(--cream) !important;
+            background: var(--stone-800);
+            padding: 12px 24px !important;
+            border-radius: 0;
+            transition: all 0.4s var(--transition-smooth) !important;
+        }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover {
+            background: var(--accent-dark) !important;
+            color: #fff !important;
+        }
+
+        /* Mobile Menu */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 32px;
+            height: 24px;
+            position: relative;
+            z-index: 1001;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 100%;
+            height: 1.5px;
+            background: var(--stone-800);
+            position: absolute;
+            left: 0;
+            transition: all 0.3s var(--transition-smooth);
+        }
+        .nav-toggle span:nth-child(1) { top: 0; }
+        .nav-toggle span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+        .nav-toggle span:nth-child(3) { bottom: 0; }
+        .nav-toggle.active span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
+        .nav-toggle.active span:nth-child(2) { opacity: 0; }
+        .nav-toggle.active span:nth-child(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(247, 245, 240, 0.97);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .mobile-menu.active { display: flex; opacity: 1; }
+        .mobile-menu a {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--stone-800);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.3s;
+        }
+        .mobile-menu a:hover { color: var(--accent); }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .nav-toggle { display: block; }
+        }
+
+        /* ═══════════════════════════════════════
+           HERO
+        ═══════════════════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://github.com/agelmet/OLIA/blob/main/1000031746.jpg?raw=true') center center / cover no-repeat;
+            z-index: -1;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(28, 25, 23, 0.35) 0%,
+                rgba(28, 25, 23, 0.50) 50%,
+                rgba(28, 25, 23, 0.65) 100%
+            );
+            z-index: -1;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 clamp(20px, 5vw, 60px);
+            position: relative;
+        }
+
+        .hero-label {
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 24px;
+            animation: fadeUp 1s var(--transition-smooth) 0.3s both;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(36px, 6vw, 72px);
+            font-weight: 300;
+            line-height: 1.15;
+            color: #fff;
+            margin-bottom: 28px;
+            animation: fadeUp 1s var(--transition-smooth) 0.5s both;
+        }
+        .hero-title em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--sage-200);
+        }
+
+        .hero-line {
+            width: 60px;
+            height: 1px;
+            background: var(--sage-300);
+            margin: 0 auto 28px;
+            animation: lineGrow 1s var(--transition-smooth) 0.8s both;
+            transform-origin: center;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-body);
+            font-size: clamp(14px, 1.5vw, 17px);
+            font-weight: 200;
+            color: rgba(255,255,255,0.75);
+            max-width: 520px;
+            margin: 0 auto 48px;
+            line-height: 1.8;
+            animation: fadeUp 1s var(--transition-smooth) 0.9s both;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeUp 1s var(--transition-smooth) 1.1s both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--stone-900);
+            background: #fff;
+            padding: 16px 36px;
+            text-decoration: none;
+            transition: all 0.4s var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--accent);
+            transform: translateY(100%);
+            transition: transform 0.4s var(--transition-smooth);
+        }
+        .btn-primary:hover::before { transform: translateY(0); }
+        .btn-primary span { position: relative; z-index: 1; }
+        .btn-primary:hover { color: #fff; }
+        .btn-primary svg { position: relative; z-index: 1; width: 14px; height: 14px; transition: transform 0.3s; }
+        .btn-primary:hover svg { transform: translateX(4px); }
+
+        .btn-ghost {
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            padding: 16px 24px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.4s var(--transition-smooth);
+        }
+        .btn-ghost:hover {
+            color: #fff;
+            border-color: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: fadeIn 1s var(--transition-smooth) 1.5s both;
+        }
+        .hero-scroll span {
+            font-size: 9px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            font-weight: 300;
+        }
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+            animation: float 2s ease-in-out infinite;
+        }
+
+        /* ═══════════════════════════════════════
+           ABOUT / PHILOSOPHY
+        ═══════════════════════════════════════ */
+        .about {
+            position: relative;
+            background: rgba(247, 245, 240, 0.92);
+            backdrop-filter: blur(6px);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(40px, 6vw, 100px);
+            align-items: center;
+        }
+        .about-image-wrap {
+            position: relative;
+        }
+        .about-image-frame {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+        }
+        .about-image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 6s var(--transition-smooth);
+        }
+        .about-image-frame:hover img {
+            transform: scale(1.04);
+        }
+        .about-image-accent {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 140px;
+            height: 140px;
+            border: 1px solid var(--sage-300);
+            z-index: -1;
+        }
+        .about-image-tag {
+            position: absolute;
+            bottom: 30px;
+            left: -20px;
+            background: var(--stone-800);
+            color: var(--cream);
+            padding: 16px 24px;
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
+        .about-label {
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--sage-500);
+            margin-bottom: 16px;
+        }
+        .about-heading {
+            font-family: var(--font-display);
+            font-size: clamp(30px, 4vw, 48px);
+            font-weight: 300;
+            line-height: 1.2;
+            color: var(--stone-800);
+            margin-bottom: 32px;
+        }
+        .about-heading em {
+            font-style: italic;
+            color: var(--accent-dark);
+        }
+        .about-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+        .about-quote {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-style: italic;
+            color: var(--stone-700);
+            border-left: 2px solid var(--sage-300);
+            padding-left: 24px;
+            margin: 32px 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 800px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .about-image-wrap { max-width: 400px; margin: 0 auto; }
+        }
+
+        /* ═══════════════════════════════════════
+           TEDx SECTION
+        ═══════════════════════════════════════ */
+        .tedx {
+            background: var(--stone-900);
+            position: relative;
+            overflow: hidden;
+        }
+        .tedx::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://github.com/agelmet/OLIA/blob/main/1000031746.jpg?raw=true') center center / cover no-repeat fixed;
+            opacity: 0.08;
+        }
+        .tedx-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(40px, 6vw, 80px);
+            align-items: center;
+            position: relative;
+        }
+        .tedx-image-wrap {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .tedx-image-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.4s;
+        }
+        .tedx-image-wrap:hover::after { background: rgba(0,0,0,0.15); }
+        .tedx-play {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 72px; height: 72px;
+            border: 2px solid rgba(255,255,255,0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s var(--transition-smooth);
+            animation: gentlePulse 2.5s infinite;
+        }
+        .tedx-image-wrap:hover .tedx-play {
+            border-color: #fff;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        .tedx-play svg { width: 20px; height: 20px; fill: #fff; margin-left: 3px; }
+        .tedx-image-wrap img {
+            width: 100%;
+            display: block;
+            transition: transform 4s var(--transition-smooth);
+        }
+        .tedx-image-wrap:hover img { transform: scale(1.05); }
+
+        .tedx-content .about-label { color: var(--sage-300); }
+        .tedx-content .about-heading { color: var(--stone-100); }
+        .tedx-content .about-text { color: var(--stone-400); }
+
+        @media (max-width: 800px) {
+            .tedx-inner { grid-template-columns: 1fr; }
+        }
+
+        /* ═══════════════════════════════════════
+           SERVICES
+        ═══════════════════════════════════════ */
+        .services {
+            background: rgba(247, 245, 240, 0.92);
+            backdrop-filter: blur(6px);
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: clamp(48px, 6vw, 80px);
+        }
+        .section-header .about-label { margin-bottom: 12px; }
+        .section-header .about-heading { margin-bottom: 16px; }
+        .section-header p {
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .service-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: clamp(32px, 4vw, 48px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s var(--transition-smooth);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--accent);
+            transition: height 0.5s var(--transition-smooth);
+        }
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.06); }
+        .service-card:hover::before { height: 100%; }
+
+        .service-icon {
+            width: 48px; height: 48px;
+            margin-bottom: 24px;
+            color: var(--accent);
+        }
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: clamp(20px, 2vw, 24px);
+            font-weight: 400;
+            color: var(--stone-800);
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+        .service-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .service-tags span {
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--sage-600);
+            background: var(--sage-50);
+            padding: 6px 14px;
+        }
+
+        @media (max-width: 700px) {
+            .services-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ═══════════════════════════════════════
+           PILLARS / APPROACH
+        ═══════════════════════════════════════ */
+        .pillars {
+            background: var(--stone-800);
+            position: relative;
+            overflow: hidden;
+        }
+        .pillars::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://github.com/agelmet/OLIA/blob/main/1000031746.jpg?raw=true') center center / cover no-repeat fixed;
+            opacity: 0.06;
+        }
+        .pillars .section-header .about-label { color: var(--sage-300); }
+        .pillars .section-header .about-heading { color: var(--stone-100); }
+        .pillars .section-header p { color: var(--stone-400); }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            position: relative;
+        }
+        .pillar-card {
+            padding: clamp(28px, 3vw, 40px);
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            transition: all 0.5s var(--transition-smooth);
+            position: relative;
+        }
+        .pillar-card:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(133, 147, 118, 0.3);
+            transform: translateY(-4px);
+        }
+        .pillar-num {
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 300;
+            color: rgba(133, 147, 118, 0.3);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        .pillar-card h3 {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--stone-100);
+            margin-bottom: 14px;
+            line-height: 1.3;
+        }
+        .pillar-card p {
+            font-size: 13px;
+            color: var(--stone-400);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 900px) {
+            .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 550px) {
+            .pillars-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ═══════════════════════════════════════
+           SPACE / GALLERY
+        ═══════════════════════════════════════ */
+        .space {
+            background: rgba(247, 245, 240, 0.92);
+            backdrop-filter: blur(6px);
+        }
+
+        .space-note {
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: -20px;
+            margin-bottom: 40px;
+        }
+
+        /* ═══════════════════════════════════════
+           REVIEWS
+        ═══════════════════════════════════════ */
+        .reviews {
+            background: rgba(247, 245, 240, 0.92);
+            backdrop-filter: blur(6px);
+            overflow: hidden;
+        }
+
+        .reviews-track-wrap {
+            position: relative;
+            overflow: hidden;
+            margin: 0 -60px;
+            padding: 20px 60px;
+        }
+        .reviews-track {
+            display: flex;
+            gap: 24px;
+            animation: scrollReviews 60s linear infinite;
+            width: max-content;
+        }
+        .reviews-track:hover { animation-play-state: paused; }
+
+        @keyframes scrollReviews {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .review-card {
+            flex-shrink: 0;
+            width: 360px;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(10px);
+            padding: 32px;
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.4s var(--transition-smooth);
+        }
+        .review-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.06);
+        }
+        .review-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .review-score {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .review-score svg { width: 18px; height: 18px; color: var(--sage-500); }
+        .review-score strong {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--stone-800);
+        }
+        .review-score span {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .review-da-icon {
+            height: 20px;
+            opacity: 0.5;
+        }
+        .review-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .review-author {
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--stone-700);
+            text-transform: uppercase;
+        }
+        .review-date {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .reviews-cta {
+            text-align: center;
+            margin-top: 48px;
+        }
+        .reviews-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--stone-600);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .reviews-cta a:hover { color: var(--accent-dark); }
+        .reviews-cta img { height: 22px; }
+
+        /* ═══════════════════════════════════════
+           CONTACT / CTA
+        ═══════════════════════════════════════ */
+        .contact {
+            background: var(--stone-900);
+            position: relative;
+            overflow: hidden;
+        }
+        .contact::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://github.com/agelmet/OLIA/blob/main/1000031746.jpg?raw=true') center center / cover no-repeat fixed;
+            opacity: 0.08;
+        }
+        .contact-inner {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: clamp(40px, 6vw, 100px);
+        }
+        .contact-main h2 {
+            font-family: var(--font-display);
+            font-size: clamp(30px, 4vw, 48px);
+            font-weight: 300;
+            color: var(--stone-100);
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        .contact-main h2 em {
+            font-style: italic;
+            color: var(--sage-300);
+        }
+        .contact-main > p {
+            font-size: 15px;
+            color: var(--stone-400);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 480px;
+        }
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--stone-900);
+            background: var(--sage-200);
+            padding: 18px 40px;
+            text-decoration: none;
+            transition: all 0.4s var(--transition-smooth);
+        }
+        .contact-btn:hover { background: var(--sage-300); transform: translateY(-2px); }
+        .contact-btn svg { width: 14px; height: 14px; transition: transform 0.3s; }
+        .contact-btn:hover svg { transform: translateX(4px); }
+
+        .contact-info { margin-top: 20px; }
+        .contact-info-label {
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--sage-400);
+            margin-bottom: 24px;
+        }
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .contact-info-item svg {
+            width: 18px; height: 18px;
+            color: var(--sage-400);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .contact-info-item a,
+        .contact-info-item span {
+            font-size: 14px;
+            color: var(--stone-300);
+            text-decoration: none;
+            line-height: 1.6;
+            transition: color 0.3s;
+        }
+        .contact-info-item a:hover { color: var(--sage-200); }
+
+        .contact-hours {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .contact-socials {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+        }
+        .contact-socials a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px; height: 44px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s var(--transition-smooth);
+        }
+        .contact-socials a:hover {
+            border-color: var(--sage-400);
+            background: rgba(255,255,255,0.04);
+        }
+        .contact-socials a svg,
+        .contact-socials a img {
+            width: 18px; height: 18px;
+            color: var(--stone-400);
+            filter: brightness(0) invert(0.6);
+        }
+        .contact-socials a:hover svg,
+        .contact-socials a:hover img {
+            color: var(--sage-300);
+            filter: brightness(0) invert(0.8);
+        }
+
+        @media (max-width: 800px) {
+            .contact-inner { grid-template-columns: 1fr; }
+        }
+
+        /* ═══════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════ */
+        .footer {
+            background: var(--stone-900);
+            border-top: 1px solid rgba(255,255,255,0.04);
+            padding: 28px 0;
+        }
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .footer-inner span,
+        .footer-inner a {
+            font-size: 12px;
+            color: var(--stone-500);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-inner a:hover { color: var(--stone-300); }
+
+        /* ═══════════════════════════════════════
+           LIGHTBOX
+        ═══════════════════════════════════════ */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(20px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+            animation: fadeIn 0.3s;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 2px;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 24px; right: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: rgba(255,255,255,0.6);
+            transition: color 0.3s;
+        }
+        .lightbox-close:hover { color: #fff; }
+        .lightbox-close svg { width: 28px; height: 28px; }
+
+        /* ═══════════════════════════════════════
+           RESPONSIVE FINE-TUNING
+        ═══════════════════════════════════════ */
+        @media (max-width: 600px) {
+            .hero-actions { flex-direction: column; }
+            .btn-primary, .btn-ghost { width: 100%; text-align: center; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- GLOBAL BG -->
+    <div class="global-bg"></div>
+
+    <!-- ═══ NAVIGATION ═══ -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#top" class="nav-logo">
+                <span class="nav-logo-name">Όλια Παμπουκίδου</span>
+                <span class="nav-logo-title">Ψυχολόγος &middot; Ψυχοθεραπεύτρια</span>
+            </a>
+            <div class="nav-links">
+                <a href="#about">Σχετικά</a>
+                <a href="#services">Υπηρεσίες</a>
+                <a href="#approach">Προσέγγιση</a>
+                <a href="#reviews">Εμπειρίες</a>
+                <a href="#contact" class="nav-cta">Ραντεβού</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about" onclick="closeMobile()">Σχετικά</a>
+        <a href="#services" onclick="closeMobile()">Υπηρεσίες</a>
+        <a href="#approach" onclick="closeMobile()">Προσέγγιση</a>
+        <a href="#reviews" onclick="closeMobile()">Εμπειρίες</a>
+        <a href="#contact" onclick="closeMobile()">Κλείστε Ραντεβού</a>
+    </div>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero" id="top">
+        <div class="hero-content">
+            <p class="hero-label">Καλαμάτα &middot; Online</p>
+            <h1 class="hero-title">Δεν Είσαι το<br><em>Σύμπτωμά</em> σου</h1>
+            <div class="hero-line"></div>
+            <p class="hero-subtitle">Συστημική & Αφηγηματική Ψυχοθεραπεία. Ένας χώρος όπου η ιστορία σας ξαναγράφεται — με τους δικούς σας όρους.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">
+                    <span>Κλείστε Ραντεβού</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#about" class="btn-ghost">Γνωρίστε με</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ═══ ABOUT ═══ -->
+    <section class="about section-pad" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image-wrap reveal">
+                    <div class="about-image-frame">
+                        <img src="https://github.com/agelmet/OLIA/blob/main/1000026810.jpg?raw=true" alt="Όλια Παμπουκίδου" loading="lazy">
+                    </div>
+                    <div class="about-image-accent"></div>
+                    <div class="about-image-tag">Αρ. Αδείας: ΔΔΥ/ΠΚΜ163436/3547</div>
+                </div>
+                <div>
+                    <p class="about-label reveal">Η Θεραπεύτρια</p>
+                    <h2 class="about-heading reveal reveal-delay-1">Συστημική &<br><em>Αφηγηματική</em> Θεραπεία</h2>
+                    <p class="about-text reveal reveal-delay-2">Η Όλια Παμπουκίδου είναι αδειούχος Ψυχολόγος, Συστημική - Οικογενειακή Ψυχοθεραπεύτρια και Μουσικοθεραπεύτρια, με γραφείο στην Καλαμάτα και δυνατότητα διαδικτυακών συνεδριών.</p>
+                    <p class="about-text reveal reveal-delay-2">Η θεραπευτική της προσέγγιση βασίζεται στην απο-παθολογικοποίηση της ανθρώπινης εμπειρίας. Δεν βλέπει τους ανθρώπους ως «ασθενείς με ταμπέλες», αλλά προσεγγίζει κάθε σύμπτωμα μέσα από μια αντι-καταπιεστική ματιά. Στόχος της είναι να σας βοηθήσει να αναδείξετε νέες, δικές σας αφηγήσεις για τη ζωή σας.</p>
+                    <div class="about-quote reveal reveal-delay-3">Κάθε σύμπτωμα είναι μια ιστορία που ζητά να ακουστεί. Ο ρόλος μου είναι να σας βοηθήσω να την ξαναγράψετε.</div>
+                    <p class="about-text reveal reveal-delay-3">Η κλινική και κοινωνική της εμπειρία είναι πολυδιάστατη. Συνεργάζεται με την Εταιρεία Alzheimer Αθηνών και το Κέντρο Πρόληψης και Συμβουλευτικής, ενώ έχει στηρίξει άτομα με αναπηρίες, ηλικιωμένους και ανθρώπους σε απεξάρτηση. Υποδέχεται ενήλικες, εφήβους, ζευγάρια και οικογένειες σε ένα 100% ασφαλή και συμπεριληπτικό χώρο.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ TEDx ═══ -->
+    <section class="tedx section-pad" id="tedx">
+        <div class="container">
+            <div class="tedx-inner">
+                <a href="https://www.youtube.com/watch?v=inQN5KhaoKQ&authuser=0" target="_blank" rel="noopener" class="tedx-image-wrap reveal">
+                    <img src="https://github.com/agelmet/OLIA/blob/main/tedx.jpg?raw=true" alt="Όλια Παμπουκίδου — TEDx Talk" loading="lazy">
+                    <div class="tedx-play">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                    </div>
+                </a>
+                <div class="tedx-content">
+                    <p class="about-label reveal">Δημόσιος Λόγος</p>
+                    <h2 class="about-heading reveal reveal-delay-1">TEDx Talk &<br><em>Ακαδημαϊκή</em> Παρουσία</h2>
+                    <p class="about-text reveal reveal-delay-2" style="color: var(--stone-400);">Η παρουσία της ως ομιλήτρια σε κορυφαία ακαδημαϊκά ιδρύματα (ΑΠΘ, Πανεπιστήμιο Μακεδονίας) και στον θεσμό TEDx αντανακλά το πάθος της να επικοινωνεί την ψυχολογία στο ευρύ κοινό και να καταρρίπτει τα στίγματα γύρω από την ψυχική υγεία.</p>
+                    <p class="about-text reveal reveal-delay-3" style="color: var(--stone-400);">Παράλληλα, δραστηριοποιείται ως ομιλήτρια στο Ανοιχτό Λαϊκό Πανεπιστήμιο, μεταφέροντας τη γνώση από τα ακαδημαϊκά αμφιθέατρα στον κάθε πολίτη.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SERVICES ═══ -->
+    <section class="services section-pad" id="services">
+        <div class="container">
+            <div class="section-header">
+                <p class="about-label reveal">Υπηρεσίες</p>
+                <h2 class="about-heading reveal reveal-delay-1">Πώς Μπορώ να <em>Βοηθήσω</em></h2>
+                <p class="reveal reveal-delay-2">Κάθε θεραπευτική διαδρομή σχεδιάζεται στα μέτρα σας, με σεβασμό στη μοναδικότητά σας.</p>
+            </div>
+
+            <div class="services-grid">
+
+                <!-- Service 1 -->
+                <div class="service-card reveal">
+                    <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M24 4C13 4 4 13 4 24s9 20 20 20 20-9 20-20S35 4 24 4z"/>
+                        <path d="M16 24c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8z"/>
+                        <path d="M24 8v4M24 36v4M8 24h4M36 24h4"/>
+                    </svg>
+                    <h3>Συμπεριληπτική Θεραπεία & Ενδυνάμωση ΛΟΑΤΚΙ+</h3>
+                    <p>Ένα απόλυτα ασφαλές και επιβεβαιωτικό περιβάλλον. Εργαζόμαστε πάνω στην ενδυνάμωση ταυτότητας, τη διαχείριση του minority stress, το coming out και τις διαπροσωπικές προκλήσεις, με απόλυτο σεβασμό στον αυτοπροσδιορισμό σας.</p>
+                    <div class="service-tags">
+                        <span>Ψυχοθεραπεία ΛΟΑΤΚΙ+</span>
+                        <span>60'</span>
+                        <span>Safe Space</span>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card reveal reveal-delay-1">
+                    <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M24 44c11-8 18-16 18-24a18 18 0 00-36 0c0 8 7 16 18 24z"/>
+                        <circle cx="24" cy="20" r="6"/>
+                    </svg>
+                    <h3>Διαχείριση Άγχους, Φοβιών & Κατάθλιψης</h3>
+                    <p>Προσεγγίζουμε τις κρίσεις πανικού, τις φοβίες και τη βαθιά θλίψη ως «απαντήσεις» του οργανισμού σας στην πίεση. Αντί να καταστείλουμε το σύμπτωμα, ακούμε τι έχει να μας πει. Μαζί βρίσκουμε πρακτικούς τρόπους ανακούφισης.</p>
+                    <div class="service-tags">
+                        <span>Άγχος & Πανικός</span>
+                        <span>Φοβίες</span>
+                        <span>Κατάθλιψη</span>
+                        <span>60'</span>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card reveal reveal-delay-2">
+                    <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 20c0-6.6 5.4-12 12-12s12 5.4 12 12"/>
+                        <path d="M8 28c0-6.6 5.4-12 12-12"/>
+                        <path d="M28 28c0-6.6 5.4-12 12-12"/>
+                        <path d="M16 36h16M20 40h8"/>
+                    </svg>
+                    <h3>Σχέσεις, Γονεϊκότητα & Οικογενειακή Θεραπεία</h3>
+                    <p>Κανένας άνθρωπος δεν ζει στο κενό. Μέσω της Συστημικής Οικογενειακής Θεραπείας, βοηθάμε ζευγάρια και οικογένειες να σπάσουν δυσλειτουργικά μοτίβα επικοινωνίας. Παρέχεται υποστήριξη στον απαιτητικό ρόλο της γονεϊκότητας.</p>
+                    <div class="service-tags">
+                        <span>Οικογενειακή</span>
+                        <span>Ζευγάρια</span>
+                        <span>Γονεϊκότητα</span>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card reveal reveal-delay-3">
+                    <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="6" y="10" width="36" height="24" rx="3"/>
+                        <circle cx="24" cy="22" r="6"/>
+                        <path d="M18 38h12"/>
+                        <path d="M24 34v4"/>
+                    </svg>
+                    <h3>Διαδικτυακή Ψυχοθεραπεία & Συνεδρίες στο Γραφείο</h3>
+                    <p>Συνεδρίες δια ζώσης στην Καλαμάτα ή διαδικτυακά μέσω βιντεοκλήσης. Η online ψυχοθεραπεία διασφαλίζει ότι λαμβάνετε τη φροντίδα που χρειάζεστε, από οπουδήποτε, με απόλυτη εχεμύθεια.</p>
+                    <div class="service-tags">
+                        <span>Δια ζώσης</span>
+                        <span>Online</span>
+                        <span>50'-60'</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ PILLARS / APPROACH ═══ -->
+    <section class="pillars section-pad" id="approach">
+        <div class="container">
+            <div class="section-header">
+                <p class="about-label reveal">Η Προσέγγιση</p>
+                <h2 class="about-heading reveal reveal-delay-1">Οι Πυλώνες της <em>Θεραπείας</em></h2>
+                <p class="reveal reveal-delay-2">Τέσσερις αξίες που διαπερνούν κάθε συνεδρία.</p>
+            </div>
+
+            <div class="pillars-grid">
+                <div class="pillar-card reveal">
+                    <div class="pillar-num">01</div>
+                    <h3>Αντι-καταπιεστική & Αφηγηματική Οπτική</h3>
+                    <p>Δεν θα βρείτε μια «αυθεντία» που θα σας κρίνει. Πιστεύω βαθιά ότι είστε ο ειδικός της δικής σας ζωής. Ο ρόλος μου είναι να σας βοηθήσω να ξαναγράψετε την ιστορία σας.</p>
+                </div>
+                <div class="pillar-card reveal reveal-delay-1">
+                    <div class="pillar-num">02</div>
+                    <h3>Η Καινοτομία της Μουσικοθεραπείας</h3>
+                    <p>Όταν οι λέξεις στερεύουν ή πονούν πολύ, η τέχνη και ο ήχος μπορούν να λειτουργήσουν ως ένα πανίσχυρο, μη-λεκτικό όχημα θεραπείας και έκφρασης συναισθημάτων.</p>
+                </div>
+                <div class="pillar-card reveal reveal-delay-2">
+                    <div class="pillar-num">03</div>
+                    <h3>Δημόσιος Λόγος & TEDx</h3>
+                    <p>Η παρουσία σε κορυφαία ακαδημαϊκά ιδρύματα και θεσμούς αντανακλά το πάθος μου να επικοινωνώ την ψυχολογία στο ευρύ κοινό και να καταρρίπτω στίγματα.</p>
+                </div>
+                <div class="pillar-card reveal reveal-delay-3">
+                    <div class="pillar-num">04</div>
+                    <h3>Βαθιά Κοινωνική Ενσυναίσθηση</h3>
+                    <p>Η εμπειρία με την τρίτη ηλικία, τα άτομα με αναπηρία και ανθρώπους σε απεξάρτηση, έχει θωρακίσει την ικανότητά μου να αγκαλιάζω τον πόνο σε όλες του τις μορφές.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ REVIEWS ═══ -->
+    <section class="reviews section-pad" id="reviews">
+        <div class="container">
+            <div class="section-header">
+                <p class="about-label reveal">Εμπιστοσύνη</p>
+                <h2 class="about-heading reveal reveal-delay-1">Εμπειρίες <em>Θεραπευόμενων</em></h2>
+                <p class="reveal reveal-delay-2">Η εμπιστοσύνη σας είναι η μεγαλύτερη απόδειξη της δουλειάς μου.</p>
+            </div>
+        </div>
+
+        <div class="reviews-track-wrap">
+            <div class="reviews-track" id="reviewsTrack">
+
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="review-top">
+                        <div class="review-score">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <strong>10.0</strong><span>/ 10</span>
+                        </div>
+                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
+                    </div>
+                    <p class="review-text">Υπέροχη. Φιλική, γλυκιά, εμπνέει εμπιστοσύνη. Σου δίνει τον χρόνο και τον χώρο να νιώσεις άνετα. Κατανόηση, ζεστασιά και ανακούφιση είναι μερικά από τα συναισθήματα που σου αφήνει μετά τη συζήτηση.</p>
+                    <div class="review-author">Katerina</div>
+                    <div class="review-date">13 Ιανουαρίου 2026</div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="review-top">
+                        <div class="review-score">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <strong>10.0</strong><span>/ 10</span>
+                        </div>
+                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
+                    </div>
+                    <p class="review-text">Από την πρώτη κιόλας συνεδρία με έκανε να νιώσω πολύ άνετα, κάτι που για εμένα είναι πολύ σημαντικό. Εξαιρετική επαγγελματίας.</p>
+                    <div class="review-author">Δήμητρα</div>
+                    <div class="review-date">06 Ιανουαρίου 2024</div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <div class="review-top">
+                        <div class="review-score">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <strong>10.0</strong><span>/ 10</span>
+                        </div>
+                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
+                    </div>
+                    <p class="review-text">Εξαιρετικές θεραπευτικές ικανότητες και άψογος επαγγελματισμός!</p>
+                    <div class="review-author">Kassiani</div>
+                    <div class="review-date">20 Οκτωβρίου 2023</div>
+                </div>
+
+                <!-- Review 4 -->
+                <div class="review-card">
+                    <div class="review-top">
+                        <div class="review-score">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <strong>10.0</strong><span>/ 10</span>
+                        </div>
+                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
+                    </div>
+                    <p class="review-text">Θεωρώ ότι η κ. Παμπουκίδου είναι πλήρως καταρτισμένη. Από το ξεκίνημα μου ενέπνευσε εμπιστοσύνη, γεγονός που έπαιξε καθοριστικό ρόλο.</p>
+                    <div class="review-author">Καλομοίρα</div>
+                    <div class="review-date">20 Οκτωβρίου 2023</div>
+                </div>
+
+                <!-- Review 5 -->
+                <div class="review-card">
+                    <div class="review-top">
+                        <div class="review-score">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <strong>10.0</strong><span>/ 10</span>
+                        </div>
+                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
+                    </div>
+                    <p class="review-text">Πάρα πολύ ζεστή, φιλική και αμέσως σου εμπνέει εμπιστοσύνη. Άψογη επαγγελματίας, με βοήθησε ουσιαστικά. Τη συνιστώ ανεπιφύλακτα!</p>
+                    <div class="review-author">Παναγιώτης</div>
+                    <div class="review-date">20 Οκτωβρίου 2023</div>
+                </div>
+
+                <!-- Review 6 -->
+                <div class="review-card">
+                    <div class="review-top">
+                        <div class="review-score">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <strong>10.0</strong><span>/ 10</span>
+                        </div>
+                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
+                    </div>
+                    <p class="review-text">Εξαιρετική επιστήμονας, συνεπής και πολύ φιλική.</p>
+                    <div class="review-author">Kostas</div>
+                    <div class="review-date">18 Οκτωβρίου 2023</div>
+                </div>
+
+                <!-- Review 7 -->
+                <div class="review-card">
+                    <div class="review-top">
+                        <div class="review-score">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <strong>10.0</strong><span>/ 10</span>
+                        </div>
+                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
+                    </div>
+                    <p class="review-text">Πολύ υποστηρικτική, επαγγελματίας, με συνέπεια και όμορφο περιβάλλον.</p>
+                    <div class="review-author">Νικόλαος</div>
+                    <div class="review-date">18 Οκτωβρίου 2023</div>
+                </div>
+
+                <!-- Review 8 -->
+                <div class="review-card">
+                    <div class="review-top">
+                        <div class="review-score">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <strong>10.0</strong><span>/ 10</span>
+                        </div>
+                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
+                    </div>
+                    <p class="review-text">Ευγενική, φιλική, με έκανε να νιώσω πολύ άνετα και να αποδεχτώ την ταυτότητα και τον σεξουαλικό μου προσδιορισμό.</p>
+                    <div class="review-author">Θάνος</div>
+                    <div class="review-date">18 Οκτωβρίου 2023</div>
+                </div>
+
+                <!-- Review 9 -->
+                <div class="review-card">
+                    <div class="review-top">
+                        <div class="review-score">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <strong>10.0</strong><span>/ 10</span>
+                        </div>
+                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
+                    </div>
+                    <p class="review-text">Εξαιρετικά καλή θεραπεύτρια, με βοήθησε πολύ με το συνεχές υπόκωφο άγχος που με βασάνιζε για χρόνια καθώς και με τις κρίσεις πανικού.</p>
+                    <div class="review-author">Νίκη</div>
+                    <div class="review-date">18 Οκτωβρίου 2023</div>
+                </div>
+
+                <!-- Review 10 -->
+                <div class="review-card">
+                    <div class="review-top">
+                        <div class="review-score">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <strong>10.0</strong><span>/ 10</span>
+                        </div>
+                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
+                    </div>
+                    <p class="review-text">Μία ψυχολόγος στην οποία μπόρεσα να ανοιχτώ χωρίς να νιώθω ότι κρίνομαι. Μέσα από τις συνεδρίες μας νιώθω πιο ανάλαφρος πλέον.</p>
+                    <div class="review-author">Γιώργος</div>
+                    <div class="review-date">17 Οκτωβρίου 2023</div>
+                </div>
+
+                <!-- Review 11 -->
+                <div class="review-card">
+                    <div class="review-top">
+                        <div class="review-score">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <strong>10.0</strong><span>/ 10</span>
+                        </div>
+                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
+                    </div>
+                    <p class="review-text">Ενσυναίσθηση, κατανόηση, αμεσότητα. Εξαιρετική επαγγελματίας. Με βοήθησε να απεγκλωβιστώ από τις σκέψεις μου και να εξωτερικεύσω συναισθήματα.</p>
+                    <div class="review-author">Γεωργία</div>
+                    <div class="review-date">17 Οκτωβρίου 2023</div>
+                </div>
+
+                <!-- Review 12 -->
+                <div class="review-card">
+                    <div class="review-top">
+                        <div class="review-score">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <strong>10.0</strong><span>/ 10</span>
+                        </div>
+                        <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime" class="review-da-icon">
+                    </div>
+                    <p class="review-text">Μοναδική σχέση εμπιστοσύνης και βαθιάς προσήλωσης. Κατάφερα να διαχειριστώ τις κρίσεις πανικού. Δίπλα μου πάντα, φιλική και επαγγελματίας.</p>
+                    <div class="review-author">Ιαβέρης</div>
+                    <div class="review-date">17 Οκτωβρίου 2023</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="reviews-cta reveal">
+                <a href="https://www.doctoranytime.gr/d/Psychologos/pampoukidou-olia" target="_blank" rel="noopener">
+                    Περισσότερες αξιολογήσεις στο
+                    <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CONTACT / CTA ═══ -->
+    <section class="contact section-pad" id="contact">
+        <div class="container">
+            <div class="contact-inner">
+                <div class="contact-main">
+                    <p class="about-label reveal" style="color: var(--sage-300);">Επικοινωνία</p>
+                    <h2 class="reveal reveal-delay-1">Η αλλαγή ξεκινά<br>με ένα <em>βήμα</em></h2>
+                    <p class="reveal reveal-delay-2">Επικοινωνήστε μαζί μου για να ορίσουμε την πρώτη σας συνεδρία. Ένας ασφαλής χώρος σας περιμένει — δια ζώσης στην Καλαμάτα ή διαδικτυακά, από οπουδήποτε.</p>
+                    <a href="#contact" class="contact-btn reveal reveal-delay-3">
+                        Κλείστε Ραντεβού
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <div class="contact-info">
+                    <p class="contact-info-label reveal">Στοιχεία Επικοινωνίας</p>
+
+                    <div class="contact-info-item reveal reveal-delay-1">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Πραξιτέλους 1, Καλαμάτα,<br>Νομός Μεσσηνίας</span>
+                    </div>
+                    <div class="contact-info-item reveal reveal-delay-2">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <a href="tel:+306980611974">698 061 1974</a>
+                    </div>
+                    <div class="contact-info-item reveal reveal-delay-3">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <a href="mailto:gkika.psy@gmail.com">gkika.psy@gmail.com</a>
+                    </div>
+
+                    <div class="contact-hours reveal">
+                        <p class="contact-info-label">Ωράριο Λειτουργίας</p>
+                        <div class="contact-info-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            <span>Δευτέρα — Παρασκευή<br>Κατόπιν Ραντεβού</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-socials reveal">
+                        <a href="https://www.doctoranytime.gr/d/Psychologos/pampoukidou-olia" target="_blank" rel="noopener" aria-label="Doctoranytime">
+                            <img src="https://www.doctoranytime.gr/images/logo-rebranding.svg" alt="Doctoranytime">
+                        </a>
+                        <a href="https://www.linkedin.com/in/olia-pampoukidou-670aba1a6/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <span>&copy; 2026 Όλια Παμπουκίδου. Όλα τα δικαιώματα κατοχυρωμένα.</span>
+                <a href="https://advonmedia.com" target="_blank" rel="noopener">Designed by Advon Media</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══ LIGHTBOX ═══ -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <img id="lightboxImg" src="" alt="">
+    </div>
+
+    <!-- ═══ SCRIPTS ═══ -->
+    <script>
+        // ─── NAV SCROLL ───
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // ─── MOBILE MENU ───
+        const toggle = document.getElementById('navToggle');
+        const mobile = document.getElementById('mobileMenu');
+        toggle.addEventListener('click', () => {
+            toggle.classList.toggle('active');
+            mobile.classList.toggle('active');
+            document.body.style.overflow = mobile.classList.contains('active') ? 'hidden' : '';
+        });
+        function closeMobile() {
+            toggle.classList.remove('active');
+            mobile.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ─── REVEAL ON SCROLL ───
+        const observerOptions = { threshold: 0.12, rootMargin: '0px 0px -40px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ─── DUPLICATE REVIEWS FOR INFINITE SCROLL ───
+        const track = document.getElementById('reviewsTrack');
+        const cards = track.innerHTML;
+        track.innerHTML = cards + cards;
+
+        // ─── LIGHTBOX ───
+        function openLightbox(src) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // ─── SMOOTH PARALLAX ON HERO ───
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero::before');
+            const scrolled = window.scrollY;
+            document.querySelector('.hero').style.setProperty('--parallax', scrolled * 0.3 + 'px');
+        });
+    </script>
+
+</body>
+</html>
