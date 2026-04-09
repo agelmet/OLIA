@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Όλια Παμπουκίδου — Συστημική & Αφηγηματική Θεραπεία</title>
-    <meta name="description" content="Συστημική & Αφηγηματική Ψυχοθεραπεία στην Καλαμάτα και Online. Δεν Είσαι το Σύμπτωμά σου.">
+    <title>Όλια Παμπουκίδου — Συστημική & Οικογενειακή Θεραπεία</title>
+    <meta name="description" content="Συστημική & Οικογενειακή Ψυχοθεραπεία στην Καλαμάτα και Online. Από το σύμπτωμα, στο Άτομο και την Κοινότητα.">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F33F;</text></svg>">
 
     <link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/agelmet/OLIA@main/1000031746.jpg">
@@ -82,6 +82,7 @@
 
         /* ─── UTILITY ─── */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 60px); }
+        .container-narrow { max-width: 800px; margin: 0 auto; }
         .section-pad { padding: clamp(60px, 10vw, 140px) 0; }
 
         /* ─── ANIMATIONS ─── */
@@ -308,7 +309,7 @@
 
         .hero-content {
             text-align: center;
-            max-width: 800px;
+            max-width: 900px;
             padding: 0 clamp(20px, 5vw, 60px);
             position: relative;
             z-index: 10;
@@ -354,7 +355,7 @@
             font-size: clamp(14px, 1.5vw, 17px);
             font-weight: 300;
             color: rgba(255,255,255,0.85);
-            max-width: 520px;
+            max-width: 580px;
             margin: 0 auto 48px;
             line-height: 1.8;
             animation: fadeUp 1s var(--transition-smooth) 0.9s both;
@@ -450,13 +451,11 @@
            SECTIONS GENERAL - Enhanced Parallax Visibility
         ═══════════════════════════════════════ */
         .light-section {
-            /* Reduced opacity and blur to reveal more of the background */
             background: rgba(247, 245, 240, 0.78);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
         }
         .dark-section {
-            /* Reduced opacity to reveal more of the background */
             background: rgba(28, 25, 23, 0.80);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
@@ -470,10 +469,12 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: clamp(40px, 6vw, 100px);
-            align-items: center;
+            align-items: flex-start;
         }
         .about-image-wrap {
             position: relative;
+            position: sticky;
+            top: 120px;
         }
         .about-image-frame {
             position: relative;
@@ -537,6 +538,14 @@
             font-style: italic;
             color: var(--accent-dark);
         }
+        .about-subheading {
+            font-family: var(--font-display);
+            font-size: clamp(22px, 2.5vw, 28px);
+            font-weight: 500;
+            color: var(--stone-800);
+            margin: 40px 0 16px;
+            line-height: 1.3;
+        }
         .about-text {
             font-size: 15px;
             color: var(--text-secondary);
@@ -556,11 +565,11 @@
 
         @media (max-width: 800px) {
             .about-grid { grid-template-columns: 1fr; }
-            .about-image-wrap { max-width: 400px; margin: 0 auto; }
+            .about-image-wrap { max-width: 400px; margin: 0 auto 60px; position: relative; top: 0; }
         }
 
         /* ═══════════════════════════════════════
-           TEDx SECTION
+           TEDx SECTION / SEMINARS
         ═══════════════════════════════════════ */
         .tedx-inner {
             display: grid;
@@ -612,8 +621,7 @@
         }
         .tedx-image-wrap:hover img { transform: scale(1.05); }
 
-        .tedx-content .about-label { color: var(--sage-300); }
-        .tedx-content .about-heading { color: var(--stone-100); }
+        .tedx-content .about-heading { color: var(--stone-100); margin-bottom: 24px; }
         .tedx-content .about-text { color: var(--stone-300); }
 
         @media (max-width: 800px) {
@@ -704,59 +712,32 @@
         }
 
         /* ═══════════════════════════════════════
-           PILLARS / APPROACH
+           APPROACH (Redesigned Reading Block)
         ═══════════════════════════════════════ */
-        .pillars .section-header .about-label { color: var(--sage-300); }
-        .pillars .section-header .about-heading { color: var(--stone-100); }
-        .pillars .section-header p { color: var(--stone-300); }
-
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            position: relative;
-        }
-        .pillar-card {
-            padding: clamp(28px, 3vw, 40px);
-            border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            transition: all 0.5s var(--transition-smooth);
-            position: relative;
+        .approach-content {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 4px;
+            padding: clamp(32px, 5vw, 60px);
+            color: var(--stone-200);
         }
-        .pillar-card:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(133, 147, 118, 0.5);
-            transform: translateY(-4px);
-        }
-        .pillar-num {
-            font-family: var(--font-display);
-            font-size: 48px;
-            font-weight: 300;
-            color: rgba(133, 147, 118, 0.5);
-            line-height: 1;
-            margin-bottom: 20px;
-        }
-        .pillar-card h3 {
-            font-family: var(--font-display);
-            font-size: 20px;
-            font-weight: 400;
-            color: var(--stone-100);
-            margin-bottom: 14px;
-            line-height: 1.3;
-        }
-        .pillar-card p {
-            font-size: 13px;
+        .approach-content p {
+            font-size: 15px;
+            line-height: 1.85;
+            margin-bottom: 24px;
             color: var(--stone-300);
-            line-height: 1.8;
         }
-
-        @media (max-width: 900px) {
-            .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+        .approach-content p:last-child {
+            margin-bottom: 0;
         }
-        @media (max-width: 550px) {
-            .pillars-grid { grid-template-columns: 1fr; }
+        .approach-intro {
+            font-family: var(--font-display);
+            font-size: clamp(22px, 3vw, 28px);
+            color: var(--sage-200);
+            margin-bottom: 32px;
+            line-height: 1.4;
+            font-style: italic;
+            text-align: center;
         }
 
         /* ═══════════════════════════════════════
@@ -784,7 +765,7 @@
         .review-card {
             flex-shrink: 0;
             width: 360px;
-            background: rgba(255,255,255,0.75); /* Lower opacity to show background */
+            background: rgba(255,255,255,0.75);
             backdrop-filter: blur(10px);
             padding: 32px;
             border: 1px solid rgba(0,0,0,0.06);
@@ -1076,9 +1057,9 @@
     <section class="hero" id="top">
         <div class="hero-content">
             <p class="hero-label">Καλαμάτα &middot; Online</p>
-            <h1 class="hero-title">Δεν Είσαι το<br><em>Σύμπτωμά</em> σου</h1>
+            <h1 class="hero-title">Από το σύμπτωμα, στο <em>Άτομο</em><br>και την Κοινότητα</h1>
             <div class="hero-line"></div>
-            <p class="hero-subtitle">Συστημική & Αφηγηματική Ψυχοθεραπεία. Ένας χώρος όπου η ιστορία σας ξαναγράφεται — με τους δικούς σας όρους.</p>
+            <p class="hero-subtitle">Συστημική - Οικογενειακή ψυχοθεραπεία.<br>Ένας χώρος όπου το βίωμα και οι ιστορίες ξαναγράφονται από μια νέα αντικαταπιεστική ματιά.</p>
             <div class="hero-actions">
                 <a href="#contact" class="btn-primary">
                     <span>Κλείστε Ραντεβού</span>
@@ -1105,11 +1086,16 @@
                 </div>
                 <div>
                     <p class="about-label reveal">Η Θεραπεύτρια</p>
-                    <h2 class="about-heading reveal reveal-delay-1">Συστημική &<br><em>Αφηγηματική</em> Θεραπεία</h2>
-                    <p class="about-text reveal reveal-delay-2">Η Όλια Παμπουκίδου είναι αδειούχος Ψυχολόγος, Συστημική - Οικογενειακή Ψυχοθεραπεύτρια και Μουσικοθεραπεύτρια, με γραφείο στην Καλαμάτα και δυνατότητα διαδικτυακών συνεδριών.</p>
-                    <p class="about-text reveal reveal-delay-2">Η θεραπευτική της προσέγγιση βασίζεται στην απο-παθολογικοποίηση της ανθρώπινης εμπειρίας. Δεν βλέπει τους ανθρώπους ως «ασθενείς με ταμπέλες», αλλά προσεγγίζει κάθε σύμπτωμα μέσα από μια αντι-καταπιεστική ματιά. Στόχος της είναι να σας βοηθήσει να αναδείξετε νέες, δικές σας αφηγήσεις για τη ζωή σας.</p>
-                    <div class="about-quote reveal reveal-delay-3">Κάθε σύμπτωμα είναι μια ιστορία που ζητά να ακουστεί. Ο ρόλος μου είναι να σας βοηθήσω να την ξαναγράψετε.</div>
-                    <p class="about-text reveal reveal-delay-3">Η κλινική και κοινωνική της εμπειρία είναι πολυδιάστατη. Συνεργάζεται με την Εταιρεία Alzheimer Αθηνών και το Κέντρο Πρόληψης και Συμβουλευτικής, ενώ έχει στηρίξει άτομα με αναπηρίες, ηλικιωμένους και ανθρώπους σε απεξάρτηση. Υποδέχεται ενήλικες, εφήβους, ζευγάρια και οικογένειες σε ένα 100% ασφαλή και συμπεριληπτικό χώρο.</p>
+                    <h2 class="about-heading reveal reveal-delay-1">Συστημική και<br><em>Οικογενειακή</em> θεραπεία</h2>
+                    
+                    <p class="about-text reveal reveal-delay-2">Γεννήθηκα, μεγάλωσα και σπούδασα στην Θεσσαλονίκη, είμαι αδειούχος Ψυχολόγος, Συστημική - Οικογενειακή Ψυχοθεραπεύτρια και Μουσικοθεραπεύτρια και τα τελευταία χρόνια διατηρώ τον θεραπευτικό μου χώρο στην Καλαμάτα με δυνατότητα διαδικτυακών συνεδριών.</p>
+                    
+                    <p class="about-text reveal reveal-delay-2">Η θεραπευτική μου προσέγγιση βασίζεται στην αποπαθολογικοποίηση του ανθρώπινου βιώματος και την πίστη πως ο καθένας από εμάς μπορεί να την ορίζει μέσα από τη δική του ματιά και προσωπική εμπειρία. Έτσι, η κατανόηση του εαυτού μας γίνεται μια διαδικασία συνεχούς σύνδεσης: από το ατομικό στο συλλογικό. Δεν μπορώ να αποσπάσω τον εαυτό μου από τα ευρύτερα συστήματα μέσα στα οποία ζω, αλλά μπορώ να επιλέξω πώς θα σταθώ απέναντί τους, πώς θα τα αμφισβητήσω ή θα τα επανανοηματοδοτήσω.</p>
+                    
+                    <div class="about-quote reveal reveal-delay-3">Κάθε σύμπτωμα είναι μία ιστορία που ζητά να ακουστεί. Και αν της δώσουμε χώρο, μπορεί να γίνει γέφυρα συνάντησης των επιθυμητών μας εαυτών που ζητούν χώρο να αναδυθούν.</div>
+                    
+                    <h3 class="about-subheading reveal reveal-delay-3">Κλινική και κοινωνική μου πρακτική</h3>
+                    <p class="about-text reveal reveal-delay-3">Η κλινική και κοινωνική μου πρακτική έχει διαμορφωθεί μέσα από διαφορετικά κλινικά πλαίσια και κοινότητες δίνοντας μου την ευκαιρία να συνοδεύσω την ανθρώπινη ιστορία με έναν ευρύ και συνθετικό τρόπο. Έχω συνεργαστεί με την Εταιρεία Alzheimer Αθηνών και το Κέντρο Πρόληψης και Συμβουλευτικής, ενώ παράλληλα έχω στηρίξει άτομα με αναπηρίες, ηλικιωμένους και ανθρώπους σε απεξάρτηση. Υποδέχομαι ενήλικες, εφήβους, ζευγάρια και οικογένειες σε ένα 100% ασφαλή και συμπεριληπτικό χώρο.</p>
                 </div>
             </div>
         </div>
@@ -1125,10 +1111,8 @@
                     </div>
                 </a>
                 <div class="tedx-content">
-                    <p class="about-label reveal">Δημόσιος Λόγος</p>
-                    <h2 class="about-heading reveal reveal-delay-1">TEDx Talk &<br><em>Ακαδημαϊκή</em> Παρουσία</h2>
-                    <p class="about-text reveal reveal-delay-2">Η παρουσία της ως ομιλήτρια σε κορυφαία ακαδημαϊκά ιδρύματα (ΑΠΘ, Πανεπιστήμιο Μακεδονίας) και στον θεσμό TEDx αντανακλά το πάθος της να επικοινωνεί την ψυχολογία στο ευρύ κοινό και να καταρρίπτει τα στίγματα γύρω από την ψυχική υγεία.</p>
-                    <p class="about-text reveal reveal-delay-3">Παράλληλα, δραστηριοποιείται ως ομιλήτρια στο Ανοιχτό Λαϊκό Πανεπιστήμιο, μεταφέροντας τη γνώση από τα ακαδημαϊκά αμφιθέατρα στον κάθε πολίτη.</p>
+                    <h2 class="about-heading reveal reveal-delay-1">Σεμινάρια &<br><em>Παρουσιάσεις</em></h2>
+                    <p class="about-text reveal reveal-delay-2">Διατηρώ την πίστη πως κάθε ανθρώπινη ιστορία που γίνεται ορατή μέσα στην ατομικότητά της, έχει βαθιές ρίζες και συνδέσεις με την κοινότητα και τις συλλογικότητες που μας περιβάλλουν. Τα σεμινάρια και οι παρουσιάσεις που χτίσαμε μαζί με θεσμούς και ιδρύματα όπως το Tedx, το Πανεπιστήμιο Μακεδονίας, το Ανοιχτό Λαϊκό Πανεπιστήμιο, υπήρξαν για μένα σημάδια αντίστασης στην μοναξιά του ανθρώπινου βιώματος και ζωντανά παραδείγματα πως οι ιστορίες μας βρίσκονται σε κοινές διαδρομές μεταξύ τους, καταρρίπτοντας έτσι συχνά τα στίγματα που κουβαλάμε γύρω από την ψυχική υγεία.</p>
                 </div>
             </div>
         </div>
@@ -1208,35 +1192,24 @@
         </div>
     </section>
 
-    <section class="pillars dark-section section-pad" id="approach">
-        <div class="container">
+    <section class="approach dark-section section-pad" id="approach">
+        <div class="container container-narrow">
             <div class="section-header">
-                <p class="about-label reveal">Η Προσέγγιση</p>
-                <h2 class="about-heading reveal reveal-delay-1">Οι Πυλώνες της <em>Θεραπείας</em></h2>
-                <p class="reveal reveal-delay-2">Τέσσερις αξίες που διαπερνούν κάθε συνεδρία.</p>
+                <p class="about-label reveal" style="color: var(--sage-300);">Η Προσέγγιση</p>
             </div>
 
-            <div class="pillars-grid">
-                <div class="pillar-card reveal">
-                    <div class="pillar-num">01</div>
-                    <h3>Αντι-καταπιεστική & Αφηγηματική Οπτική</h3>
-                    <p>Δεν θα βρείτε μια «αυθεντία» που θα σας κρίνει. Πιστεύω βαθιά ότι είστε ο ειδικός της δικής σας ζωής. Ο ρόλος μου είναι να σας βοηθήσω να ξαναγράψετε την ιστορία σας.</p>
-                </div>
-                <div class="pillar-card reveal reveal-delay-1">
-                    <div class="pillar-num">02</div>
-                    <h3>Η Καινοτομία της Μουσικοθεραπείας</h3>
-                    <p>Όταν οι λέξεις στερεύουν ή πονούν πολύ, η τέχνη και ο ήχος μπορούν να λειτουργήσουν ως ένα πανίσχυρο, μη-λεκτικό όχημα θεραπείας και έκφρασης συναισθημάτων.</p>
-                </div>
-                <div class="pillar-card reveal reveal-delay-2">
-                    <div class="pillar-num">03</div>
-                    <h3>Δημόσιος Λόγος & TEDx</h3>
-                    <p>Η παρουσία σε κορυφαία ακαδημαϊκά ιδρύματα και θεσμούς αντανακλά το πάθος μου να επικοινωνώ την ψυχολογία στο ευρύ κοινό και να καταρρίπτω στίγματα.</p>
-                </div>
-                <div class="pillar-card reveal reveal-delay-3">
-                    <div class="pillar-num">04</div>
-                    <h3>Βαθιά Κοινωνική Ενσυναίσθηση</h3>
-                    <p>Η εμπειρία με την τρίτη ηλικία, τα άτομα με αναπηρία και ανθρώπους σε απεξάρτηση, έχει θωρακίσει την ικανότητά μου να αγκαλιάζω τον πόνο σε όλες του τις μορφές.</p>
-                </div>
+            <div class="approach-content reveal reveal-delay-1">
+                <p class="approach-intro">Ας γνωριστούμε λίγο καλύτερα με τη συστημική προσέγγιση~</p>
+                
+                <p>Η συστημική προσέγγιση είναι ένας τρόπος να ειδωθούν τα πράγματα ως μέρος ενός ευρύτερου συνόλου και όχι ως μεμονωμένα κομμάτια. Αυτό σημαίνει πως για να καταλάβουμε μία πραγματικότητα δεν παρατηρούμε μόνο το άτομο ή το στοιχείο που παρουσιάζει το πρόβλημα αλλά ολόκληρο το περιβάλλον στο οποίο ζει και αλληλεπιδρά.</p>
+                
+                <p>Καλούμαστε λοιπόν να στρέψουμε το βλέμμα μας σε όλες τις κοινότητες που μας πλαισιώνουν, από την οικογένεια και το εργασιακό μας περιβάλλον, μέχρι τις κοινότητες των φίλων και του τόπου που ανήκουμε.</p>
+                
+                <p>Ο τρόπος που αντιλαμβάνομαι τις ταυτότητές μου δεν είναι στατικός ούτε μονοδιάστατος. Διαμορφώνεται και μετασχηματίζεται μέσα από τα πολλαπλά πεδία στα οποία υπάρχω. Το φύλο μου, η κοινωνική και οικονομική μου θέση, η πολιτισμική μου καταγωγή, η επαγγελματική μου ιδιότητα, αλλά και οι εμπειρίες που κουβαλώ στο σώμα και τη μνήμη μου, συνυφαίνονται σε ένα πλέγμα που καθορίζει το πώς βλέπω τον εαυτό μου και τον κόσμο.</p>
+                
+                <p>Καμία από αυτές τις διαστάσεις δεν λειτουργεί απομονωμένα. Αντίθετα, αλληλεπιδρούν, συγκρούονται, ενισχύονται ή αποδυναμώνονται ανάλογα με το πλαίσιο. Το φύλο μου, για παράδειγμα, δεν είναι απλώς μια προσωπική ταυτότητα, αλλά μια εμπειρία που φιλτράρεται μέσα από κοινωνικές προσδοκίες, σχέσεις εξουσίας και ιστορικά συμφραζόμενα. Η τάξη μου επηρεάζει τις δυνατότητες και τους περιορισμούς που συναντώ, αλλά και τον τρόπο με τον οποίο νοηματοδοτώ την επιτυχία, την ασφάλεια ή την επιθυμία.</p>
+                
+                <p>Ταυτόχρονα, αναγνωρίζω ότι η ταυτότητα δεν είναι μόνο κάτι που «έχω», αλλά και κάτι που διαρκώς διαπραγματεύομαι. Στις σχέσεις μου με τους άλλους, στις κοινότητες όπου ανήκω ή από τις οποίες αποκλίνω, στους ρόλους που επιλέγω ή μου αποδίδονται, επαναπροσδιορίζω το ποια είμαι.</p>
             </div>
         </div>
     </section>
